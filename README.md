@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Swagger API Documentation
+API documentation can be accessed at: `/api/documentation`
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Bootcamp Technical Task – Back-End PHP "API для зборів з функціональністю"
 
-## About Laravel
+## Завдання
+Розробити API, яке дозволить створювати, керувати та отримувати інформацію про збори з додатковою функціональністю.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Вимоги
+- **База даних:**
+    - Створити базу даних для зборів з такими таблицями:
+        - collections: Збори, які користувачі створюють.
+            - id: Унікальний ідентифікатор.
+            - title: Заголовок зборів.
+            - description: Опис зборів.
+            - target_amount: Кінцева сума збору.
+            - link: Посилання на збори.
+            - created_at: Дата створення.
+        - contributors: Внески користувачів до зборів.
+            - id: Унікальний ідентифікатор.
+            - collection_id: Зовнішній ключ до таблиці зборів.
+            - user_name: Ім'я користувача, який зробив внесок.
+            - amount: Сума внеску.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Створення зборів:**
+    - Реалізувати можливість для створення нових зборів через POST-запит з вказанням заголовку, опису, кінцевої суми та посилання.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Отримання списку зборів:**
+    - Реалізувати можливість отримання списку всіх зборів через GET-запит.
+    - Кожен збір повинен містити ідентифікатор, заголовок, опис, кінцеву суму та посилання.
 
-## Learning Laravel
+- **Додавання внесків:**
+    - Реалізувати можливість долучення внесків до зборів через POST-запит з вказанням імені користувача та суми.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Отримання деталей збору:**
+    - Реалізувати можливість отримання деталей конкретного збору за його ідентифікатором через GET-запит.
+    - Деталі повинні містити заголовок, опис, кінцеву суму, посилання та список внесків з іменами користувачів та сумами.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Фільтрація зборів:**
+    - Реалізувати можливість фільтрування зборів за залишеною сумою до досягнення кінцевої суми.
+    - Отримати список зборів, які мають суму внесків менше за цільову суму.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Додаткові можливості (необов'язково):**
+    - Реалізувати можливість редагування та видалення зборів та внесків.
+    - Додати авторизацію через токени для доступу до API.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Технічні деталі
+- Використовуйте PHP для розробки серверної частини.
+- Використовуйте SQL для взаємодії з базою даних.
+- Рекомендовано використовувати фреймворк для створення API, такий як Symfony або Laravel.
+- Врахуйте архітектурні принципи RESTful API та забезпечте обробку помилок та валідацію даних.
+- Додайте коментарі та документацію до коду, де це необхідно.
