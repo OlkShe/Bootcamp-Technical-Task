@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    nginx:
+        container_name: project_nginx
+        image: nginx:latest
+        volumes:
+            - ./:/var/www
+            - ./_docker/nginx:/etc/nginx/conf.d
+        ports:
+            - "8080:80"
+        depends_on:
+            - php-fpm
+
+    php-fpm:
+        container_name: project_php-fpm
+        build:
+            context: .
+            dockerfile: _docker/php-fpm/Dockerfile
+        volumes:
+            - ./:/var/www
+            - ./_docker/php-fpm/php-ini-overrides.ini:/etc/php/8.0/fpm/php.ini
+            - ./_docker/tmp/nginx:/var/log/nginx/
+        depends_on:
+            - postgres
+
+    postgres:
+        container_name: project_postgres
+        image: postgres:14.1
+        volumes:
+            - ./_docker/tmp/db/:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=${DB_DATABASE}
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+        ports:
+            - "5432:5432"
+        expose:
+            - 5432
