@@ -1,5 +1,21 @@
 ## Swagger API Documentation
-API documentation can be accessed at: `/api/documentation`
+API documentation can be accessed at: `http://localhost:8080/api/documentation`
+
+## Installation
+
+To get the project up and running, follow these steps:
+
+1. **Clone the Project:**
+    `cd your-project
+    git clone https://github.com/OlkShe/Bootcamp-Technical-Task.git`
+2. **Build Docker Containers:**
+    `docker-compose build`
+3. **Start Containers:**
+    `docker-compose up -d`
+4. **Access the Application:**
+    ``The application should now be accessible at `http://localhost:8080/`.``
+
+_The env settings file does not contain critical data, so it is left for the convenience of deploying the application._
 
 # Bootcamp Technical Task – Back-End PHP "API для зборів з функціональністю"
 
